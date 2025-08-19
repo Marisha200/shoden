@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.body.contains(document.getElementById('drag-drop-game'))) {
         initializeDragDropGame();
         initializeQuizGame();
-        initializeTechniqueQuiz();
     }
 });
 
@@ -115,55 +114,4 @@ function checkQuizAnswer(userAnswer) {
         displayQuizQuestion();
         document.querySelectorAll('.button-group .button').forEach(button => button.disabled = false);
     }, 2500);
-}
-
-// --- GAME 3: WHAT'S THE TECHNIQUE? ---
-const techniqueScenarios = [
-    { scenario: "Para limpiar tu campo energético rápidamente después de un día pesado, ¿qué técnica usas?", correctAnswer: "Kenyoku", options: ["Kenyoku", "Gassho", "Reiji Ho"] },
-    { scenario: "Si quieres calmar tu mente y aumentar la sensibilidad en tus manos antes de meditar, ¿qué práctica realizas?", correctAnswer: "Gassho", options: ["Gassho", "Gyoshi Ho", "Kenyoku"] },
-    { scenario: "Quieres enviar sanación a un amigo que vive en otra ciudad. ¿Qué habilidad necesitas?", correctAnswer: "Reiki a Distancia", options: ["Reiki a Distancia", "Byosen", "Nentatsu Ho"] },
-    { scenario: "Sientes un hormigueo intenso en tus manos sobre el hombro de una persona. ¿Qué estás percibiendo?", correctAnswer: "Byosen", options: ["Byosen", "Koki Ho", "Gassho"] }
-];
-let currentTechniqueIndex = 0;
-
-function initializeTechniqueQuiz() {
-    shuffleArray(techniqueScenarios);
-    displayTechniqueScenario();
-}
-
-function displayTechniqueScenario() {
-    const current = techniqueScenarios[currentTechniqueIndex];
-    document.getElementById('technique-scenario').textContent = current.scenario;
-    const optionsContainer = document.getElementById('technique-options');
-    optionsContainer.innerHTML = '';
-    
-    const shuffledOptions = [...current.options];
-    shuffleArray(shuffledOptions);
-
-    shuffledOptions.forEach(option => {
-        const button = document.createElement('button');
-        button.className = 'button';
-        button.textContent = option;
-        button.onclick = () => checkTechniqueAnswer(option);
-        optionsContainer.appendChild(button);
-    });
-
-    document.getElementById('technique-feedback').style.display = 'none';
-}
-
-function checkTechniqueAnswer(chosenOption) {
-    const current = techniqueScenarios[currentTechniqueIndex];
-    const feedback = document.getElementById('technique-feedback');
-    const isCorrect = chosenOption === current.correctAnswer;
-
-    feedback.textContent = isCorrect ? `¡Correcto! ${current.correctAnswer} es la técnica adecuada.` : 'No es esa, pero sigue intentando.';
-    feedback.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-    feedback.style.display = 'block';
-    
-    document.querySelectorAll('#technique-options .button').forEach(button => button.disabled = true);
-
-    setTimeout(() => {
-        currentTechniqueIndex = (currentTechniqueIndex + 1) % techniqueScenarios.length;
-        displayTechniqueScenario();
-    }, 3000);
 }
