@@ -14,6 +14,7 @@
         <a href="index.html">Inicio</a>
         <a href="conceptos.html">Conceptos</a>
         <a href="tecnicas.html">Técnicas</a>
+        <a href="extras.html">Extras</a>
     </nav>
 
     <div class="container">
@@ -21,7 +22,18 @@
             <p>¡La mejor forma de aprender es haciendo! Usa estas herramientas para afianzar tus conocimientos de una manera divertida.</p>
         </section>
         
-        <!-- Game 1: Drag and Drop -->
+        <!-- Game 1: Quiz Verdadero o Falso -->
+        <div class="game-container">
+            <h3>Quiz: Fundamentos de Reiki</h3>
+            <p id="quiz-question"><strong>Pregunta:</strong></p>
+            <div class="button-group">
+                <button class="button" onclick="checkQuizAnswer(false)">Verdadero</button>
+                <button class="button" onclick="checkQuizAnswer(true)">Falso</button>
+            </div>
+            <div id="quiz-feedback" class="feedback" style="display:none;"></div>
+        </div>
+
+        <!-- Game 2: Drag and Drop -->
         <div class="game-container">
             <h3>Juego: Conecta los Conceptos</h3>
             <p>Arrastra cada palabra desde el banco de la derecha hasta su definición correcta a la izquierda.</p>
@@ -32,17 +44,6 @@
             <div id="completion-message" class="feedback correct" style="display:none; text-align:center;">
                 ¡Felicidades! Has conectado todos los conceptos correctamente.
             </div>
-        </div>
-
-        <!-- Game 2: Quiz Verdadero o Falso -->
-        <div class="game-container">
-            <h3>Quiz: Fundamentos de Reiki</h3>
-            <p id="quiz-question"><strong>Pregunta:</strong></p>
-            <div class="button-group">
-                <button class="button" onclick="checkQuizAnswer(false)">Verdadero</button>
-                <button class="button" onclick="checkQuizAnswer(true)">Falso</button>
-            </div>
-            <div id="quiz-feedback" class="feedback" style="display:none;"></div>
         </div>
         
     </div>
