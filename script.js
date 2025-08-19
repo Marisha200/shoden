@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.body.contains(document.getElementById('drag-drop-game'))) {
         initializeDragDropGame();
         initializeQuizGame();
-        initializeGokaiScramble();
         initializeTechniqueQuiz();
     }
 });
@@ -118,54 +117,7 @@ function checkQuizAnswer(userAnswer) {
     }, 2500);
 }
 
-// --- GAME 3: GOKAI SCRAMBLE ---
-const gokaiPrinciples = [
-    "Solo por hoy no te enojes",
-    "Solo por hoy no te preocupes",
-    "Se agradecido",
-    "Trabaja honestamente",
-    "Se amable con los demas"
-];
-let currentGokaiIndex = 0;
-
-function scrambleString(str) {
-    let words = str.split(' ');
-    shuffleArray(words);
-    return words.join(' ');
-}
-
-function initializeGokaiScramble() {
-    shuffleArray(gokaiPrinciples);
-    displayScrambledGokai();
-}
-
-function displayScrambledGokai() {
-    const principle = gokaiPrinciples[currentGokaiIndex];
-    document.getElementById('scrambled-gokai').textContent = scrambleString(principle);
-    document.getElementById('gokai-input').value = '';
-    document.getElementById('gokai-scramble-feedback').style.display = 'none';
-}
-
-function checkGokaiScramble() {
-    const userInput = document.getElementById('gokai-input').value.trim().toLowerCase();
-    const correctAnswer = gokaiPrinciples[currentGokaiIndex].toLowerCase();
-    const feedback = document.getElementById('gokai-scramble-feedback');
-
-    const isCorrect = userInput.replace(/\s+/g, '') === correctAnswer.replace(/\s+/g, '');
-
-    feedback.textContent = isCorrect ? '¡Excelente!' : 'Casi, inténtalo de nuevo.';
-    feedback.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-    feedback.style.display = 'block';
-
-    if (isCorrect) {
-        setTimeout(() => {
-            currentGokaiIndex = (currentGokaiIndex + 1) % gokaiPrinciples.length;
-            displayScrambledGokai();
-        }, 2000);
-    }
-}
-
-// --- GAME 4: WHAT'S THE TECHNIQUE? ---
+// --- GAME 3: WHAT'S THE TECHNIQUE? ---
 const techniqueScenarios = [
     { scenario: "Para limpiar tu campo energético rápidamente después de un día pesado, ¿qué técnica usas?", correctAnswer: "Kenyoku", options: ["Kenyoku", "Gassho", "Reiji Ho"] },
     { scenario: "Si quieres calmar tu mente y aumentar la sensibilidad en tus manos antes de meditar, ¿qué práctica realizas?", correctAnswer: "Gassho", options: ["Gassho", "Gyoshi Ho", "Kenyoku"] },
