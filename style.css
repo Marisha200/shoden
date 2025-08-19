@@ -362,3 +362,21 @@ audio::-webkit-media-controls-time-remaining-display {
     border-radius: 20px;
     display: inline-block;
 }
+
+/* Footer Styles */
+.main-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--secondary-color);
+}
+
+.main-footer a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.main-footer a:hover {
+    text-decoration: underline;
+}
