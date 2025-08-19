@@ -153,9 +153,14 @@ li { margin-bottom: 10px; }
 .feedback.incorrect { color: var(--incorrect-color); background-color: #fce8e6; }
 
 /* Drag and Drop Game */
-#drag-drop-game { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; }
-#definitions-container { flex-basis: 55%; min-width: 300px; }
-#word-bank { flex-basis: 35%; min-width: 200px; background-color: var(--secondary-color); padding: 15px; border-radius: var(--border-radius); display: flex; flex-direction: column; gap: 10px; }
+.drag-drop-instance {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+#definitions-container, .definitions-container { flex-basis: 55%; min-width: 300px; }
+#word-bank, .word-bank { flex-basis: 35%; min-width: 200px; background-color: var(--secondary-color); padding: 15px; border-radius: var(--border-radius); display: flex; flex-direction: column; gap: 10px; }
 .draggable-word { background-color: #fff; padding: 10px 15px; border: 2px solid var(--accent-color); color: var(--primary-color); border-radius: 8px; cursor: grab; text-align: center; font-weight: 600; }
 .draggable-word.dragging { opacity: 0.5; }
 .definition-item { display: flex; align-items: center; margin-bottom: 10px; background-color: #f9f9f9; padding: 5px; border-radius: 8px; }
@@ -165,8 +170,8 @@ li { margin-bottom: 10px; }
 .drop-zone.correct-drop { border: 2px solid var(--correct-color); background-color: #e9f7eb; }
 .drop-zone .draggable-word { cursor: default; }
 @media (max-width: 800px) {
-    #drag-drop-game { flex-direction: column; }
-    #definitions-container, #word-bank { flex-basis: 100%; width: 100%; }
+    .drag-drop-instance { flex-direction: column; }
+    #definitions-container, .definitions-container, #word-bank, .word-bank { flex-basis: 100%; width: 100%; }
 }
 
 /* Practitioner Tools (Techniques page) */
@@ -290,4 +295,37 @@ audio::-webkit-media-controls-time-remaining-display {
 }
 .blog-card:hover .read-more {
     color: var(--primary-color);
+}
+
+/* Quiz Timer */
+#quiz-timer {
+    font-weight: normal;
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-left: 10px;
+}
+
+/* Byosen Game Styles */
+.byosen-sensation {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin: 20px 0;
+}
+.byosen-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.byosen-level-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 1.2rem;
 }
