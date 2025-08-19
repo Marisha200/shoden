@@ -1,4 +1,4 @@
-/* Opción 3: Noche Mística */
+/* Opción 3: Noche Mística (Versión Completa) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 :root {
@@ -169,6 +169,125 @@ li { margin-bottom: 10px; }
     #definitions-container, #word-bank { flex-basis: 100%; width: 100%; }
 }
 
-/* Guided Practice */
-.practice-animation { background-color: var(--secondary-color); padding: 20px; border-radius: var(--border-radius); text-align: center; }
-.practice-step-text { font-size: 1.2rem; font-style: italic; color: var(--primary-color); min-height: 50px; transition: opacity 0.5s; }
+/* Practitioner Tools (Techniques page) */
+.tool-card {
+    background-color: var(--light-bg);
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 20px;
+}
+.tool-card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* Hand Positions Grid */
+.positions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+.position-card {
+    background-color: var(--light-bg);
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+.position-card:hover {
+    border-color: var(--accent-color);
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+.position-card span {
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Audio Player Styles */
+.techniques-audio-list {
+    list-style: none;
+    padding-left: 0;
+}
+.techniques-audio-list li {
+    background-color: var(--light-bg);
+    padding: 20px;
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}
+.techniques-audio-list audio {
+    width: 100%;
+    margin-top: 15px;
+}
+audio::-webkit-media-controls-panel { background-color: var(--secondary-color); }
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Blog Cards Grid (Extras page) */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+.blog-card {
+    background-color: #fff;
+    border: 1px solid var(--secondary-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+}
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(72, 61, 139, 0.15);
+    border-color: var(--accent-color);
+}
+.blog-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.blog-card p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+.blog-card .read-more {
+    font-weight: 600;
+    color: var(--accent-color);
+    align-self: flex-end;
+    transition: color 0.3s ease;
+}
+.blog-card:hover .read-more {
+    color: var(--primary-color);
+}
