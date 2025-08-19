@@ -17,7 +17,7 @@ function shuffleArray(array) {
     }
 }
 
-// --- GAME 1: DRAG AND DROP ---
+// --- GAME 1: DRAG AND DROP (with Touch Support) ---
 const dragDropData = [
     { id: 'usui', term: 'Mikao Usui', definition: 'El fundador del método Reiki.' },
     { id: 'gokai', term: 'Gokai', definition: 'Los 5 principios éticos del Reiki.' },
@@ -51,32 +51,92 @@ function addDragDropListeners() {
     const draggables = document.querySelectorAll('.draggable-word');
     const dropZones = document.querySelectorAll('.drop-zone');
     let correctDrops = 0;
+    let touchDraggedElement = null;
 
+    // Common function to handle a successful drop
+    function handleDrop(zone, element) {
+        if (zone.dataset.answer === element.id && !zone.hasChildNodes()) {
+            zone.appendChild(element);
+            if(element.draggable) element.draggable = false; // Disable mouse drag after drop
+            zone.classList.add('correct-drop');
+            correctDrops++;
+            if (correctDrops === dragDropData.length) {
+                document.getElementById('completion-message').style.display = 'block';
+            }
+        }
+    }
+
+    // MOUSE EVENTS for Desktop
     draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', () => draggable.classList.add('dragging'));
-        draggable.addEventListener('dragend', () => draggable.classList.remove('dragging'));
+        draggable.addEventListener('dragstart', (e) => {
+            e.target.classList.add('dragging');
+        });
+        draggable.addEventListener('dragend', (e) => {
+            e.target.classList.remove('dragging');
+        });
     });
 
     dropZones.forEach(zone => {
         zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-        zone.addEventListener('dragleave', () => zone.classList.remove('over'));
+        zone.addEventListener('dragleave', () => { zone.classList.remove('over'); });
         zone.addEventListener('drop', e => {
             e.preventDefault();
             zone.classList.remove('over');
-            const draggedId = document.querySelector('.dragging').id;
-            const draggedElement = document.getElementById(draggedId);
-            if (zone.dataset.answer === draggedId && !zone.hasChildNodes()) {
-                zone.appendChild(draggedElement);
-                draggedElement.draggable = false;
-                zone.classList.add('correct-drop');
-                correctDrops++;
-                if (correctDrops === dragDropData.length) {
-                    document.getElementById('completion-message').style.display = 'block';
-                }
+            const draggingElement = document.querySelector('.dragging');
+            if (draggingElement) {
+                handleDrop(zone, draggingElement);
             }
         });
     });
+
+    // TOUCH EVENTS for Mobile
+    draggables.forEach(draggable => {
+        draggable.addEventListener('touchstart', (e) => {
+            touchDraggedElement = e.target;
+            touchDraggedElement.classList.add('dragging');
+        });
+    });
+
+    // Listen for touch movement on the whole container for better experience
+    const gameContainer = document.querySelector('#drag-drop-game');
+    gameContainer.addEventListener('touchmove', (e) => {
+        if (!touchDraggedElement) return;
+        e.preventDefault(); // Prevent screen from scrolling while dragging
+        
+        const touch = e.targetTouches[0];
+        const elementUnder = document.elementFromPoint(touch.clientX, touch.clientY);
+        
+        dropZones.forEach(zone => {
+            if (zone === elementUnder || zone.contains(elementUnder)) {
+                zone.classList.add('over');
+            } else {
+                zone.classList.remove('over');
+            }
+        });
+    }, { passive: false });
+
+    gameContainer.addEventListener('touchend', (e) => {
+        if (!touchDraggedElement) return;
+
+        const touch = e.changedTouches[0];
+        let dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+        
+        // Check if the drop target is a zone or inside a zone
+        if (dropTarget && !dropTarget.classList.contains('drop-zone')) {
+            dropTarget = dropTarget.closest('.drop-zone');
+        }
+
+        if (dropTarget && dropTarget.classList.contains('drop-zone')) {
+            handleDrop(dropTarget, touchDraggedElement);
+        }
+
+        // Cleanup
+        touchDraggedElement.classList.remove('dragging');
+        dropZones.forEach(zone => zone.classList.remove('over'));
+        touchDraggedElement = null;
+    });
 }
+
 
 // --- GAME 2: QUIZ VERDADERO/FALSO ---
 const quizQuestions = [
