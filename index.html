@@ -29,6 +29,33 @@
             font-size: 1.1em; /* Tamaño de fuente para la frase */
             line-height: 1.6;
         }
+
+        /* Estilos para el botón flotante "Ir Arriba" */
+        #scrollTopBtn {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Posición flotante */
+            bottom: 20px; /* A 20px del borde inferior */
+            right: 30px; /* A 30px del borde derecho */
+            z-index: 99; /* Asegurarse que esté sobre otros elementos */
+            border: none;
+            outline: none;
+            background-color: #a855f7; /* Color violeta a juego */
+            color: white; /* Flecha blanca */
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%; /* Forma circular */
+            font-size: 18px; /* Tamaño de la flecha */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+            width: 50px;
+            height: 50px;
+            line-height: 18px; /* Alineación vertical de la flecha */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #581c87; /* Color más oscuro al pasar el mouse */
+            transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+        }
     </style>
 </head>
 <body>
@@ -85,6 +112,9 @@
     <footer class="main-footer">
         <a href="https://www.rinconzen.com.ar" target="_blank">www.rinconzen.com.ar - Hecho con ❤️</a>
     </footer>
+
+    <!-- Botón para ir arriba -->
+    <button id="scrollTopBtn" title="Ir arriba">↑</button>
 
     <script>
         // Nueva lista de frases
@@ -145,12 +175,31 @@
             '“Quien mira hacia afuera sueña, quien mira hacia adentro despierta.” — Carl Gustav Jung'
         ];
 
-        // Función para mostrar una frase aleatoria al cargar la página
+        // Espera a que todo el contenido del HTML esté cargado antes de ejecutar el script
         document.addEventListener('DOMContentLoaded', () => {
+            // Lógica para mostrar una frase aleatoria
             const fraseElemento = document.getElementById('frase-inspiradora');
             const indiceAleatorio = Math.floor(Math.random() * frases.length);
             fraseElemento.textContent = frases[indiceAleatorio];
+
+            // Lógica para el botón de "Ir Arriba"
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+            // Mostrar el botón cuando el usuario hace scroll
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            };
+
+            // Hacer scroll suave hacia arriba al hacer clic
+            scrollTopBtn.addEventListener("click", function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
         });
     </script>
 </body>
 </html>
+
