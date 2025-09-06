@@ -78,7 +78,32 @@
     <footer class="main-footer">
     <a href="https://www.rinconzen.com.ar" target="_blank">www.rinconzen.com.ar - Hecho con ❤️</a>
 </footer>
+        <!-- Botón para ir arriba -->
+    <button id="scrollTopBtn" title="Ir arriba">↑</button>
+
+    <script>
+        // Espera a que todo el contenido del HTML esté cargado antes de ejecutar el script
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lógica para el botón de "Ir Arriba"
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+            // Mostrar el botón cuando el usuario hace scroll
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    scrollTopBtn.style.display = "block";
+                } else {
+                    scrollTopBtn.style.display = "none";
+                }
+            };
+
+            // Hacer scroll suave hacia arriba al hacer clic
+            scrollTopBtn.addEventListener("click", function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+        });
+    </script>
 </body>
 </html>
+
 
 
