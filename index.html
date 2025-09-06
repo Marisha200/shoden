@@ -5,35 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía Interactiva de Reiki Nivel I</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para el nuevo bloque "Pensamiento del Día" */
+        .pensamiento-dia {
+            background-color: #f8f9fa; /* Un color de fondo suave */
+            border-left: 5px solid #dddddd;
+            margin: 2em auto; /* Centrado y con espacio vertical */
+            padding: 1.5em;
+            max-width: 90%; /* Ancho máximo para que se vea bien */
+            text-align: center;
+            border-radius: 5px;
+        }
+        .pensamiento-dia h3 {
+            font-size: 1.25em; /* Tamaño de fuente para el título */
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+        #frase-inspiradora {
+            font-style: italic;
+            color: #555;
+            font-size: 1.1em; /* Tamaño de fuente para la frase */
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Reiki Nivel I: Shoden</h1>
         <p>Tu Guía Visual e Interactiva</p>
 
-<!-- Default Statcounter code for Shoden app
-https://shoden.netlify.app/ -->
-<script type="text/javascript">
-var sc_project=13164190; 
-var sc_invisible=1; 
-var sc_security="10b9b6a3"; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js"
-async></script>
-<noscript><div class="statcounter"><a title="web counter"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/13164190/0/10b9b6a3/1/"
-alt="web counter"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
+        <!-- Default Statcounter code for Shoden app https://shoden.netlify.app/ -->
+        <script type="text/javascript">
+            var sc_project = 13164190;
+            var sc_invisible = 1;
+            var sc_security = "10b9b6a3";
+        </script>
+        <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+        <noscript>
+            <div class="statcounter"><a title="web counter" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13164190/0/10b9b6a3/1/" alt="web counter" referrerPolicy="no-referrer-when-downgrade"></a></div>
+        </noscript>
+        <!-- End of Statcounter Code -->
     </header>
 
     <div class="container">
         <section class="main-menu">
             <h2>Bienvenido/a a tu viaje de aprendizaje</h2>
             <p>Esta guía está diseñada para ayudarte a integrar los conocimientos del Nivel I de Reiki de una forma visual e interactiva. Navega a través de las secciones para aprender y practicar.</p>
+            
+            <!-- Bloque de Pensamiento del Día añadido aquí -->
+            <div class="pensamiento-dia">
+                <h3>Pensamiento del Día</h3>
+                <blockquote id="frase-inspiradora">
+                    <!-- La frase aleatoria se cargará aquí con JavaScript -->
+                </blockquote>
+            </div>
+
             <nav class="page-nav">
                 <a href="conceptos.html" class="nav-card">
                     <h3>📖 Conceptos Clave</h3>
@@ -55,11 +82,75 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
         </section>
     </div>
     <footer class="main-footer">
-    <a href="https://www.rinconzen.com.ar" target="_blank">www.rinconzen.com.ar - Hecho con ❤️</a>
-</footer>
+        <a href="https://www.rinconzen.com.ar" target="_blank">www.rinconzen.com.ar - Hecho con ❤️</a>
+    </footer>
+
+    <script>
+        // Nueva lista de frases
+        const frases = [
+            '“A veces sentimos que lo que hacemos es tan solo una gota en el mar, pero el mar sería menos si le faltara una gota.” — Madre Teresa de Calcuta',
+            '“La bondad es el lenguaje que los sordos pueden oír y los ciegos pueden ver.” — Mark Twain',
+            '“Cuando seas bueno con los demás, serás mejor contigo mismo.” — Benjamin Franklin',
+            '“Un poco de perfume siempre queda en las manos de quien da flores.” — Proverbio chino',
+            '“Si quieres que otros sean felices, practica la compasión. Si quieres ser feliz, practica la compasión.” — Dalai Lama',
+            '“El acto más pequeño de bondad vale más que la intención más grande.” — Khalil Gibran',
+            '“La gratitud es la memoria del corazón.” — Lao Tse',
+            '“La belleza no mira, solo es mirada.” — Albert Einstein',
+            '“Un alma noble no necesita que la reconozcan para brillar.” — Proverbio árabe',
+            '“Las palabras amables pueden ser cortas y fáciles de decir, pero su eco es verdaderamente infinito.” — Madre Teresa de Calcuta',
+            '“El amor y la bondad nunca se desperdician. Siempre hacen la diferencia.” — Helen James',
+            '“Cuando cambias la forma en que mirás las cosas, las cosas que mirás cambian.” — Wayne Dyer',
+            '“El perfume de las flores se esparce solo en la dirección del viento. Pero la bondad de una persona se esparce en todas direcciones.” — Chanakya',
+            '“La sonrisa es la curva que lo endereza todo.” — Phyllis Diller',
+            '“La esperanza es como el sol, arroja luz sobre todo lo que toca.” — Proverbio japonés',
+            '“El amor es la belleza del alma.” — San Agustín',
+            '“Un corazón alegre hace tanto bien como una medicina.” — Proverbios 17:22',
+            '“Siembra actos de bondad y cosecharás alegría.” — Refrán popular',
+            '“La paz comienza con una sonrisa.” — Madre Teresa de Calcuta',
+            'La calma que buscás afuera, florece primero adentro.',
+            'Cada día es una oportunidad para crear una nueva versión de vos mismo/a.',
+            'Respirar profundo es recordar que estás vivo/a y que todo puede empezar de nuevo.',
+            'La luz que compartís ilumina caminos que ni imaginás.',
+            'Todo lo que das con amor regresa multiplicado.',
+            'Ser auténtico es el mayor acto de valentía.',
+            'El presente es un regalo: por eso se llama así.',
+            'No hay error, sólo experiencia para crecer.',
+            'La gratitud convierte lo que tenemos en suficiente.',
+            'El alma siempre sabe cómo sanar; el desafío es silenciar la mente.',
+            'Sembrá calma, y cosecharás claridad.',
+            'La belleza de tu vida está en cómo elegís mirarla.',
+            'El universo susurra en lo simple.',
+            'Ser consciente es transformar lo ordinario en sagrado.',
+            'Cuando el corazón se abre, todo se vuelve posible.',
+            'La magia está en lo invisible que aprendés a sentir.',
+            'No corras detrás del tiempo: aprendé a danzar con él.',
+            'Cada final es también un inicio disfrazado.',
+            'En la quietud se escucha la verdad más profunda.',
+            'Tu historia está hecha de estrellas: única, irrepetible, brillante.',
+            'El poder está en tus manos, siempre que lo uses con amor.',
+            'La vida no espera que seas perfecto, espera que seas real.',
+            'Lo pequeño que hagas con amor tiene más fuerza que lo grande hecho con vacío.',
+            'Mirar el cielo es recordar que sos parte de algo infinito.',
+            'Cuando soltás lo que pesa, tus alas recuerdan cómo volar.',
+            'La energía fluye donde tu atención se posa.',
+            'Todo lo que buscás afuera, ya lo llevás dentro.',
+            'No subestimes el poder de una sonrisa: puede cambiar un día entero.',
+            'Tu ser es un templo: honralo con presencia y amor.',
+            'El silencio no es vacío: está lleno de respuestas.',
+            '“Sé el cambio que querés ver en el mundo.” — Mahatma Gandhi',
+            '“La felicidad no es algo hecho. Proviene de tus propias acciones.” — Dalai Lama',
+            '“Conocerse a sí mismo es el principio de toda sabiduría.” — Aristóteles',
+            '“En lo profundo del invierno aprendí que había dentro de mí un verano invencible.” — Albert Camus',
+            '“Quien mira hacia afuera sueña, quien mira hacia adentro despierta.” — Carl Gustav Jung'
+        ];
+
+        // Función para mostrar una frase aleatoria al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const fraseElemento = document.getElementById('frase-inspiradora');
+            const indiceAleatorio = Math.floor(Math.random() * frases.length);
+            fraseElemento.textContent = frases[indiceAleatorio];
+        });
+    </script>
 </body>
 </html>
-
-
-
 
