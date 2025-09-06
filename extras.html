@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extras y Blog - Reiki Nivel I</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para el botón flotante "Ir Arriba" */
+        #scrollTopBtn {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Posición flotante */
+            bottom: 20px; /* A 20px del borde inferior */
+            right: 30px; /* A 30px del borde derecho */
+            z-index: 99; /* Asegurarse que esté sobre otros elementos */
+            border: none;
+            outline: none;
+            background-color: #a855f7; /* Color violeta a juego */
+            color: white; /* Flecha blanca */
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%; /* Forma circular */
+            font-size: 18px; /* Tamaño de la flecha */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+            width: 50px;
+            height: 50px;
+            line-height: 18px; /* Alineación vertical de la flecha */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #581c87; /* Color más oscuro al pasar el mouse */
+            transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -95,7 +123,7 @@
     <footer class="main-footer">
     <a href="https://www.rinconzen.com.ar" target="_blank">www.rinconzen.com.ar - Hecho con ❤️</a>
 </footer>
-        <!-- Botón para ir arriba -->
+    <!-- Botón para ir arriba -->
     <button id="scrollTopBtn" title="Ir arriba">↑</button>
 
     <script>
